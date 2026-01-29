@@ -95,7 +95,7 @@ class SpatialGate_new1(nn.Module):
 class CBAM(nn.Module):
     def __init__(self, gate_channels, reduction_ratio=16, pool_types=None, no_spatial=False,activation='relu',excite_activation="sigmoid"):
         super(CBAM, self).__init__()
-        self.ChannelGate = ChannelGate(gate_channels, reduction_ratio, pool_types,activation=activation,excite_activation=excite_activation)
+        self.ChannelGate = ChannelGate(gate_channels, reduction_ratio, pool_types)
         self.no_spatial=no_spatial
         if not no_spatial:
             self.SpatialGate = SpatialGate_new1(gate_channels)
