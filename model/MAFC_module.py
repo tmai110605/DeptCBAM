@@ -87,6 +87,7 @@ class SpatialGate_new1(nn.Module):
         self.gate_s.add_module('gate_s_bn0',nn.BatchNorm2d(cout))
         self.gate_s.add_module('gate_s_relu0',nn.ReLU())
         self.gate_s.add_module('gate_s_conv_reduce', nn.Conv2d(cout, 1, kernel_size=1))
+        self.gate_s.add_module( 'gate_s_conv_expand', nn.Conv2d(1, gate_channel, kernel_size=1))
 
     def forward(self, x):
         att = torch.sigmoid(self.gate_s(x))  
